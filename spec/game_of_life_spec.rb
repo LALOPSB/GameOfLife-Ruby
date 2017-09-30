@@ -1,4 +1,5 @@
 require_relative '../lib/game_of_life'
+require_relative '../lib/cell'
 
 describe GameOfLife do
 
@@ -28,7 +29,16 @@ describe GameOfLife do
       end
     end
 
-    context 'when a game_of_life has ' do
+    context 'when theres a cell with no neighbors' do
+      before do
+        @lonelyCell = Cell.new(1,2)
+        @game_of_life.add_live_cell(@lonelyCell)
+        @game_of_life.tick
+      end
+
+      it 'it gets killed after tick' do
+        expect(@game_of_life.live_cells).to be_empty
+      end
 
     end
 

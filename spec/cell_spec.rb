@@ -43,5 +43,6 @@ describe Cell do
         expect(@cell_02.neighbor?(@cell_01)).to be false
       end
     end
+
   end
 end

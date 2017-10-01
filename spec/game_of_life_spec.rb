@@ -117,6 +117,21 @@ describe GameOfLife do
       end
     end
 
+    context 'when theres a dead cell with more than three neighbors' do
+      before do
+        @wont_be_alive_cell = Cell.new(1,1)
+        add_cell_to_game(0,0)
+        add_cell_to_game(0,2)
+        add_cell_to_game(2,0)
+        add_cell_to_game(2,2)
+        @game_of_life.tick
+      end
+
+      it 'wont get alive after tick' do
+        expect(@game_of_life.live_cells).not_to include(@wont_be_alive_cell)
+      end
+    end
+
   end
 
   describe '#add_cell' do
